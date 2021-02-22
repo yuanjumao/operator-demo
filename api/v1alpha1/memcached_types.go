@@ -31,6 +31,8 @@ type MemcachedSpec struct {
 	// +kubebuilder:validation:Minimum=0
 	// Size is the size of the memcached deployment
 	Size int32 `json:"size"`
+	// +kubebuilder:validation:Required
+	Image string `json:"image"`
 }
 
 // MemcachedStatus defines the observed state of Memcached
@@ -43,9 +45,7 @@ type MemcachedStatus struct {
 
 // +kubebuilder:object:root=true
 // +kubebuilder:subresource:status
-
 // Memcached is the Schema for the memcacheds API
-// +kubebuilder:subresource:status
 type Memcached struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
